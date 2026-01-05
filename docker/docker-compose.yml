@@ -1,0 +1,43 @@
+# Medical Billing MCP - Docker Compose
+#
+# Usage:
+#   docker compose up -d        # Start the server
+#   docker compose logs -f      # View logs
+#   docker compose down         # Stop the server
+
+version: '3.8'
+
+services:
+  mcp:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: medical-billing-mcp
+    restart: unless-stopped
+    
+    # For development: mount source for live reload
+    volumes:
+      - ../src:/app/src:ro
+    
+    # Keep container running for MCP stdio communication
+    stdin_open: true
+    tty: true
+    
+    # Environment
+    environment:
+      - PYTHONUNBUFFERED=1
+    
+    # No ports needed - MCP uses stdio, not HTTP
+
+  # Optional: Test runner
+  test:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: medical-billing-mcp-test
+    command: python -m pytest tests/ -v
+    volumes:
+      - ../src:/app/src:ro
+      - ../tests:/app/tests:ro
+    profiles:
+      - test

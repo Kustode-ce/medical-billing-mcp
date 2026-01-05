@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "medical-billing": {
+      "command": "python",
+      "args": ["-m", "medical_billing_mcp"]
+    }
+  }
+}

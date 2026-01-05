@@ -1,0 +1,174 @@
+{
+  "_meta": {
+    "description": "CPT procedure codes - descriptions only",
+    "source": "AMA (limited educational use)",
+    "note": "Full CPT requires AMA license. This is seed data for common codes.",
+    "last_updated": "2025-01-05"
+  },
+  "codes": {
+    "99212": {
+      "description": "Office visit, established patient, straightforward",
+      "category": "E/M",
+      "time_range": "10-19 minutes",
+      "documentation": {
+        "mdm_level": "straightforward",
+        "requires": ["chief_complaint", "assessment", "plan"]
+      },
+      "rvu_work": 0.70
+    },
+    "99213": {
+      "description": "Office visit, established patient, low complexity",
+      "category": "E/M",
+      "time_range": "20-29 minutes",
+      "documentation": {
+        "mdm_level": "low",
+        "requires": ["chief_complaint", "history", "assessment", "plan"],
+        "mdm_elements": {
+          "problems": "2+ self-limited problems OR 1 chronic stable illness",
+          "data": "Limited",
+          "risk": "Low"
+        }
+      },
+      "common_modifiers": ["25"],
+      "common_denials": ["upcoding", "bundled_with_procedure"],
+      "rvu_work": 1.30
+    },
+    "99214": {
+      "description": "Office visit, established patient, moderate complexity",
+      "category": "E/M",
+      "time_range": "30-39 minutes",
+      "documentation": {
+        "mdm_level": "moderate",
+        "requires": ["chief_complaint", "history", "exam", "assessment", "plan"],
+        "mdm_elements": {
+          "problems": "1+ chronic illness with severe exacerbation OR 2+ chronic illnesses with mild exacerbation",
+          "data": "Moderate (order/review tests, obtain history, discuss with external)",
+          "risk": "Moderate (prescription drug management)"
+        }
+      },
+      "common_modifiers": ["25"],
+      "common_denials": ["downcoded_to_99213", "documentation_insufficient"],
+      "rvu_work": 1.92
+    },
+    "99215": {
+      "description": "Office visit, established patient, high complexity",
+      "category": "E/M",
+      "time_range": "40-54 minutes",
+      "documentation": {
+        "mdm_level": "high",
+        "requires": ["chief_complaint", "comprehensive_history", "comprehensive_exam", "assessment", "plan"],
+        "mdm_elements": {
+          "problems": "1+ chronic illness with severe exacerbation, acute or chronic illness posing threat to life",
+          "data": "Extensive",
+          "risk": "High (drug therapy requiring intensive monitoring, decision for major surgery)"
+        }
+      },
+      "rvu_work": 2.80
+    },
+    "99203": {
+      "description": "Office visit, new patient, low complexity",
+      "category": "E/M",
+      "time_range": "30-44 minutes",
+      "documentation": {
+        "mdm_level": "low",
+        "requires": ["comprehensive_history", "exam", "assessment", "plan"]
+      },
+      "rvu_work": 1.60
+    },
+    "99204": {
+      "description": "Office visit, new patient, moderate complexity",
+      "category": "E/M",
+      "time_range": "45-59 minutes",
+      "documentation": {
+        "mdm_level": "moderate"
+      },
+      "rvu_work": 2.60
+    },
+    "99205": {
+      "description": "Office visit, new patient, high complexity",
+      "category": "E/M",
+      "time_range": "60-74 minutes",
+      "documentation": {
+        "mdm_level": "high"
+      },
+      "rvu_work": 3.50
+    },
+    "99385": {
+      "description": "Initial comprehensive preventive medicine, 18-39 years",
+      "category": "Preventive",
+      "note": "Cannot bill with 99213-99215 unless modifier 25 with separate issue",
+      "rvu_work": 1.50
+    },
+    "99386": {
+      "description": "Initial comprehensive preventive medicine, 40-64 years",
+      "category": "Preventive",
+      "rvu_work": 1.75
+    },
+    "99395": {
+      "description": "Periodic preventive medicine, established, 18-39 years",
+      "category": "Preventive",
+      "rvu_work": 1.30
+    },
+    "99396": {
+      "description": "Periodic preventive medicine, established, 40-64 years",
+      "category": "Preventive",
+      "rvu_work": 1.50
+    },
+    "36415": {
+      "description": "Venipuncture, routine",
+      "category": "Lab",
+      "note": "Can bill separately from E/M",
+      "rvu_work": 0.17
+    },
+    "45378": {
+      "description": "Colonoscopy, flexible, diagnostic",
+      "category": "Surgery - GI",
+      "global_period": 0,
+      "documentation": {
+        "requires": ["indication", "extent_of_exam", "prep_quality", "findings", "recommendations"]
+      },
+      "common_denials": ["medical_necessity", "frequency_limit"]
+    },
+    "45380": {
+      "description": "Colonoscopy with biopsy, single or multiple",
+      "category": "Surgery - GI",
+      "global_period": 0,
+      "note": "Includes 45378 - do not bill both",
+      "bundled_with": ["45378"]
+    },
+    "45385": {
+      "description": "Colonoscopy with polypectomy",
+      "category": "Surgery - GI",
+      "global_period": 0,
+      "note": "Includes 45378 - do not bill both",
+      "bundled_with": ["45378"]
+    },
+    "93000": {
+      "description": "Electrocardiogram (ECG/EKG), routine, with interpretation",
+      "category": "Cardiology",
+      "components": {
+        "93005": "Technical component only",
+        "93010": "Professional component only"
+      },
+      "rvu_work": 0.17
+    },
+    "99441": {
+      "description": "Telephone E/M, 5-10 minutes",
+      "category": "E/M - Telehealth",
+      "time_range": "5-10 minutes medical discussion",
+      "rvu_work": 0.25
+    },
+    "99442": {
+      "description": "Telephone E/M, 11-20 minutes",
+      "category": "E/M - Telehealth",
+      "time_range": "11-20 minutes",
+      "rvu_work": 0.50
+    },
+    "99443": {
+      "description": "Telephone E/M, 21-30 minutes",
+      "category": "E/M - Telehealth",
+      "time_range": "21-30 minutes",
+      "rvu_work": 0.75
+    }
+  }
+}

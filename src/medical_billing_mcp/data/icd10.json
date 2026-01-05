@@ -1,0 +1,166 @@
+{
+  "_meta": {
+    "description": "ICD-10-CM diagnosis codes",
+    "source": "CMS",
+    "version": "FY2025",
+    "last_updated": "2025-01-05",
+    "note": "Seed data - community contributions welcome"
+  },
+  "codes": {
+    "E11.9": {
+      "description": "Type 2 diabetes mellitus without complications",
+      "billable": true,
+      "chapter": "E00-E89",
+      "category": "Endocrine, nutritional and metabolic diseases",
+      "hcc": true,
+      "hcc_category": 19,
+      "common_procedures": ["99213", "99214", "82947", "83036"]
+    },
+    "E11.65": {
+      "description": "Type 2 diabetes mellitus with hyperglycemia",
+      "billable": true,
+      "chapter": "E00-E89",
+      "hcc": true,
+      "hcc_category": 19,
+      "note": "More specific than E11.9 - use when hyperglycemia documented"
+    },
+    "E11.21": {
+      "description": "Type 2 diabetes mellitus with diabetic nephropathy",
+      "billable": true,
+      "chapter": "E00-E89",
+      "hcc": true,
+      "hcc_category": 18,
+      "note": "Code also the stage of CKD (N18.x)"
+    },
+    "E10.9": {
+      "description": "Type 1 diabetes mellitus without complications",
+      "billable": true,
+      "chapter": "E00-E89",
+      "hcc": true,
+      "hcc_category": 19
+    },
+    "I10": {
+      "description": "Essential (primary) hypertension",
+      "billable": true,
+      "chapter": "I00-I99",
+      "category": "Diseases of the circulatory system",
+      "hcc": false,
+      "common_procedures": ["99213", "99214", "93000"]
+    },
+    "I50.9": {
+      "description": "Heart failure, unspecified",
+      "billable": true,
+      "chapter": "I00-I99",
+      "hcc": true,
+      "hcc_category": 85,
+      "note": "Use more specific code if type documented (I50.2x systolic, I50.3x diastolic)"
+    },
+    "I50.22": {
+      "description": "Chronic systolic (congestive) heart failure",
+      "billable": true,
+      "chapter": "I00-I99",
+      "hcc": true,
+      "hcc_category": 85,
+      "note": "More specific than I50.9"
+    },
+    "I50.32": {
+      "description": "Chronic diastolic (congestive) heart failure",
+      "billable": true,
+      "chapter": "I00-I99",
+      "hcc": true,
+      "hcc_category": 85
+    },
+    "J44.1": {
+      "description": "Chronic obstructive pulmonary disease with acute exacerbation",
+      "billable": true,
+      "chapter": "J00-J99",
+      "category": "Diseases of the respiratory system",
+      "hcc": true,
+      "hcc_category": 111
+    },
+    "J44.9": {
+      "description": "Chronic obstructive pulmonary disease, unspecified",
+      "billable": true,
+      "chapter": "J00-J99",
+      "hcc": true,
+      "hcc_category": 111
+    },
+    "N18.3": {
+      "description": "Chronic kidney disease, stage 3 (moderate)",
+      "billable": true,
+      "chapter": "N00-N99",
+      "hcc": true,
+      "hcc_category": 138
+    },
+    "N18.4": {
+      "description": "Chronic kidney disease, stage 4 (severe)",
+      "billable": true,
+      "chapter": "N00-N99",
+      "hcc": true,
+      "hcc_category": 137
+    },
+    "N18.5": {
+      "description": "Chronic kidney disease, stage 5",
+      "billable": true,
+      "chapter": "N00-N99",
+      "hcc": true,
+      "hcc_category": 136
+    },
+    "N18.6": {
+      "description": "End stage renal disease",
+      "billable": true,
+      "chapter": "N00-N99",
+      "hcc": true,
+      "hcc_category": 136
+    },
+    "Z00.00": {
+      "description": "Encounter for general adult medical examination without abnormal findings",
+      "billable": true,
+      "chapter": "Z00-Z99",
+      "category": "Factors influencing health status",
+      "hcc": false,
+      "note": "Use for wellness/preventive visits. Limited coverage for diagnostic procedures."
+    },
+    "Z12.11": {
+      "description": "Encounter for screening for malignant neoplasm of colon",
+      "billable": true,
+      "chapter": "Z00-Z99",
+      "hcc": false,
+      "note": "Use for screening colonoscopy"
+    },
+    "Z86.010": {
+      "description": "Personal history of colonic polyps",
+      "billable": true,
+      "chapter": "Z00-Z99",
+      "hcc": false,
+      "note": "Use for surveillance colonoscopy after polyp removal"
+    },
+    "K21.0": {
+      "description": "Gastro-esophageal reflux disease with esophagitis",
+      "billable": true,
+      "chapter": "K00-K95",
+      "hcc": false
+    },
+    "M54.5": {
+      "description": "Low back pain",
+      "billable": true,
+      "chapter": "M00-M99",
+      "category": "Diseases of the musculoskeletal system",
+      "hcc": false
+    },
+    "F32.9": {
+      "description": "Major depressive disorder, single episode, unspecified",
+      "billable": true,
+      "chapter": "F01-F99",
+      "category": "Mental, behavioral and neurodevelopmental disorders",
+      "hcc": true,
+      "hcc_category": 59
+    },
+    "F41.1": {
+      "description": "Generalized anxiety disorder",
+      "billable": true,
+      "chapter": "F01-F99",
+      "hcc": false
+    }
+  }
+}

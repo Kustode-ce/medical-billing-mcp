@@ -1,0 +1,132 @@
+{
+  "_meta": {
+    "description": "CPT/HCPCS modifiers with usage guidance",
+    "last_updated": "2025-01-05"
+  },
+  "modifiers": {
+    "25": {
+      "description": "Significant, separately identifiable E/M service by the same physician on the same day of a procedure",
+      "use_with": ["E/M codes (99202-99215, etc.)"],
+      "use_when": "E/M service is above and beyond the usual pre/post work for a procedure",
+      "documentation_required": [
+        "Chief complaint separate from procedure indication",
+        "History and/or exam elements for separate issue",
+        "Separate medical decision making"
+      ],
+      "common_mistakes": [
+        "Using for routine pre-op evaluation",
+        "No separate documentation in chart",
+        "E/M only addresses issue requiring procedure"
+      ],
+      "audit_risk": "HIGH",
+      "examples": {
+        "appropriate": "Patient comes for mole removal, also has new cough requiring evaluation",
+        "inappropriate": "Patient comes for mole removal, provider examines only the mole"
+      }
+    },
+    "59": {
+      "description": "Distinct procedural service",
+      "use_when": [
+        "Different anatomical site or organ system",
+        "Separate incision/excision",
+        "Separate lesion",
+        "Different session or patient encounter"
+      ],
+      "note": "Use more specific X modifiers when possible",
+      "related_modifiers": ["XE", "XS", "XP", "XU"],
+      "common_mistakes": [
+        "Using to unbundle services that should be bundled",
+        "Using when no distinct service was performed"
+      ],
+      "audit_risk": "HIGH"
+    },
+    "XE": {
+      "description": "Separate encounter - service distinct because it occurred during separate encounter",
+      "use_when": "Same day, different encounter/session",
+      "more_specific_than": "59"
+    },
+    "XS": {
+      "description": "Separate structure - service distinct because performed on different organ/structure",
+      "use_when": "Different anatomical structure",
+      "more_specific_than": "59"
+    },
+    "XP": {
+      "description": "Separate practitioner - service distinct because performed by different practitioner",
+      "use_when": "Different provider performed the service",
+      "more_specific_than": "59"
+    },
+    "XU": {
+      "description": "Unusual non-overlapping service - service distinct because it does not overlap usual components",
+      "use_when": "Services are unusual and don't overlap",
+      "more_specific_than": "59"
+    },
+    "26": {
+      "description": "Professional component",
+      "use_when": "Billing only for physician interpretation, not technical/equipment",
+      "use_with": ["Radiology", "Cardiology", "Pathology"],
+      "pairs_with": "TC"
+    },
+    "TC": {
+      "description": "Technical component",
+      "use_when": "Billing only for equipment, supplies, technician - not professional interpretation",
+      "use_with": ["Radiology", "Cardiology", "Pathology"],
+      "pairs_with": "26"
+    },
+    "50": {
+      "description": "Bilateral procedure",
+      "use_when": "Same procedure performed on both sides of body",
+      "billing_note": "Some payers prefer one line with -50, others want two lines with RT/LT",
+      "payment": "Typically 150% of single procedure"
+    },
+    "RT": {
+      "description": "Right side",
+      "use_when": "Procedure performed on right side of body"
+    },
+    "LT": {
+      "description": "Left side",
+      "use_when": "Procedure performed on left side of body"
+    },
+    "76": {
+      "description": "Repeat procedure by same physician",
+      "use_when": "Same procedure, same physician, same day - indicates not a duplicate"
+    },
+    "77": {
+      "description": "Repeat procedure by different physician",
+      "use_when": "Same procedure, different physician, same day"
+    },
+    "95": {
+      "description": "Synchronous telemedicine service via real-time interactive audio/video",
+      "use_when": "Medicare telehealth visit",
+      "medicare_specific": true,
+      "alternative": "Place of Service 02 or 10"
+    },
+    "GT": {
+      "description": "Via interactive audio and video telecommunications",
+      "use_when": "Telehealth visit (some commercial payers)",
+      "note": "Medicare prefers modifier 95"
+    },
+    "33": {
+      "description": "Preventive services",
+      "use_when": "Service is specifically for prevention",
+      "note": "Helps ensure claim processes as preventive for cost-sharing"
+    },
+    "22": {
+      "description": "Increased procedural services",
+      "use_when": "Work required was substantially greater than typically required",
+      "documentation_required": [
+        "Operative report must explain increased complexity",
+        "Quantify additional work if possible"
+      ],
+      "note": "Requires manual review - may result in additional payment"
+    },
+    "24": {
+      "description": "Unrelated E/M during postoperative period",
+      "use_when": "E/M during global period for condition unrelated to surgery"
+    },
+    "57": {
+      "description": "Decision for surgery",
+      "use_when": "E/M visit resulted in decision for major surgery (90-day global)",
+      "note": "Use 25 for minor surgery (0 or 10-day global)"
+    }
+  }
+}

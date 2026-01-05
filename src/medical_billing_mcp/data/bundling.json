@@ -1,0 +1,83 @@
+{
+  "_meta": {
+    "description": "Common CCI (Correct Coding Initiative) bundling pairs",
+    "source": "CMS National Correct Coding Initiative",
+    "last_updated": "2025-01-05",
+    "note": "This is a subset of common bundles. Full CCI database updated quarterly by CMS."
+  },
+  "bundles": {
+    "45378|45380": {
+      "column_1": "45380",
+      "column_2": "45378",
+      "modifier_allowed": false,
+      "description": "Colonoscopy with biopsy includes diagnostic colonoscopy",
+      "explanation": "When biopsy is performed, the work of diagnostic colonoscopy is included",
+      "resolution": "Bill only 45380 (colonoscopy with biopsy)"
+    },
+    "45378|45385": {
+      "column_1": "45385",
+      "column_2": "45378",
+      "modifier_allowed": false,
+      "description": "Colonoscopy with polypectomy includes diagnostic colonoscopy",
+      "resolution": "Bill only 45385 (colonoscopy with polypectomy)"
+    },
+    "45380|45385": {
+      "column_1": "45385",
+      "column_2": "45380",
+      "modifier_allowed": true,
+      "description": "Polypectomy and biopsy may be separate if different sites",
+      "resolution": "Use modifier 59 if truly separate sites, otherwise bill 45385 only"
+    },
+    "99213|99000": {
+      "column_1": "99213",
+      "column_2": "99000",
+      "modifier_allowed": false,
+      "description": "Specimen handling bundled with E/M",
+      "resolution": "Do not bill 99000 with E/M services"
+    },
+    "36415|99211": {
+      "column_1": "36415",
+      "column_2": "99211",
+      "modifier_allowed": false,
+      "description": "Minimal E/M may be bundled with venipuncture",
+      "resolution": "Generally bill only 36415 unless significant separate E/M"
+    },
+    "93000|93005": {
+      "column_1": "93000",
+      "column_2": "93005",
+      "modifier_allowed": false,
+      "description": "Global EKG includes technical component",
+      "resolution": "Bill 93000 for global, OR 93005+93010 for split TC/PC"
+    },
+    "93000|93010": {
+      "column_1": "93000",
+      "column_2": "93010",
+      "modifier_allowed": false,
+      "description": "Global EKG includes professional component",
+      "resolution": "Bill 93000 for global, OR 93005+93010 for split TC/PC"
+    }
+  },
+  "commonly_asked": {
+    "99213|36415": {
+      "bundled": false,
+      "can_bill_together": true,
+      "explanation": "E/M and venipuncture are typically separate services"
+    },
+    "99214|36415": {
+      "bundled": false,
+      "can_bill_together": true,
+      "explanation": "E/M and venipuncture are typically separate services"
+    },
+    "99213|99214": {
+      "bundled": true,
+      "can_bill_together": false,
+      "explanation": "Cannot bill two E/M codes same provider same day",
+      "resolution": "Bill the higher level code only"
+    }
+  },
+  "notes": {
+    "cci_updates": "CCI edits are updated quarterly by CMS",
+    "modifier_allowed": "When modifier_allowed is true, modifier 59 or X-modifiers may unbundle",
+    "verification": "Always verify with current CCI edits - this is sample data"
+  }
+}

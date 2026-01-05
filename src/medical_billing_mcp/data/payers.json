@@ -1,0 +1,149 @@
+{
+  "_meta": {
+    "description": "Payer-specific billing rules",
+    "last_updated": "2025-01-05",
+    "note": "Rules vary by plan/product - always verify with specific contract"
+  },
+  "payers": {
+    "medicare": {
+      "name": "Medicare",
+      "type": "federal",
+      "timely_filing_days": 365,
+      "timely_filing_from": "date_of_service",
+      "appeal_deadline_days": 120,
+      "appeal_deadline_from": "remittance_date",
+      "appeal_levels": [
+        "Redetermination (120 days)",
+        "Reconsideration by QIC (180 days)",
+        "ALJ Hearing (60 days)",
+        "Medicare Appeals Council (60 days)",
+        "Federal District Court (60 days)"
+      ],
+      "telehealth": {
+        "modifier": "95",
+        "pos_codes": ["02", "10"],
+        "pos_02": "Patient not at home",
+        "pos_10": "Patient at home",
+        "audio_only_codes": ["99441", "99442", "99443", "G2012"]
+      },
+      "contacts": {
+        "provider_services": "1-800-MEDICARE (1-800-633-4227)",
+        "website": "cms.gov"
+      },
+      "known_issues": [],
+      "tips": [
+        "Use modifier 95 for telehealth, not GT",
+        "ABN required for non-covered services",
+        "Check LCD for coverage criteria"
+      ]
+    },
+    "medicare_advantage": {
+      "name": "Medicare Advantage (Part C)",
+      "type": "managed_care",
+      "timely_filing_days": "Varies by plan - typically 365",
+      "note": "Rules vary by specific MA plan - check plan documents",
+      "tips": [
+        "Prior auth requirements vary by plan",
+        "May have different coverage than Original Medicare",
+        "Check specific plan formulary/coverage"
+      ]
+    },
+    "medicaid": {
+      "name": "Medicaid (State Programs)",
+      "type": "state",
+      "timely_filing_days": "Varies by state - typically 90-365",
+      "note": "Each state has different rules",
+      "tips": [
+        "Check state-specific guidelines",
+        "Prior auth requirements vary widely",
+        "Some states require specific modifiers"
+      ]
+    },
+    "bcbs": {
+      "name": "Blue Cross Blue Shield (General)",
+      "type": "commercial",
+      "timely_filing_days": "90-365 - varies by plan",
+      "note": "BCBS plans are independent - rules vary significantly",
+      "known_issues": [
+        "Inconsistent processing across plans",
+        "May process same service differently on same EOB",
+        "Authorization requirements change frequently"
+      ],
+      "tips": [
+        "Always verify specific plan rules",
+        "Get prior auth numbers in writing",
+        "Document everything",
+        "Appeal denials - many are reversed"
+      ]
+    },
+    "bcbs_ma": {
+      "name": "Blue Cross Blue Shield Massachusetts",
+      "type": "commercial",
+      "state": "MA",
+      "timely_filing_days": 90,
+      "contacts": {
+        "provider_services": "1-800-882-2060"
+      }
+    },
+    "uhc": {
+      "name": "UnitedHealthcare",
+      "type": "commercial",
+      "timely_filing_days": "90-180 - varies by plan",
+      "portals": {
+        "provider": "uhcprovider.com",
+        "prior_auth": "uhcprovider.com/priorauth"
+      },
+      "contacts": {
+        "provider_services": "1-877-842-3210"
+      },
+      "tips": [
+        "Use UHC portal for prior auth",
+        "Check specific plan requirements"
+      ]
+    },
+    "aetna": {
+      "name": "Aetna",
+      "type": "commercial",
+      "timely_filing_days": 90,
+      "timely_filing_days_nonpar": 180,
+      "portals": {
+        "provider": "aetna.com/healthcare-professionals"
+      },
+      "contacts": {
+        "provider_services": "1-800-624-0756"
+      }
+    },
+    "cigna": {
+      "name": "Cigna",
+      "type": "commercial",
+      "timely_filing_days": 90,
+      "portals": {
+        "provider": "cignaforhcp.cigna.com"
+      },
+      "contacts": {
+        "provider_services": "1-800-882-4462"
+      }
+    },
+    "humana": {
+      "name": "Humana",
+      "type": "commercial",
+      "timely_filing_days": 90,
+      "prior_auth": {
+        "delegated_to": "Cohere Health (for some services)",
+        "cohere_portal": "provider.coherehealth.com",
+        "cohere_phone": "1-855-795-2662"
+      },
+      "contacts": {
+        "provider_services": "1-800-523-0023"
+      }
+    },
+    "tricare": {
+      "name": "TRICARE",
+      "type": "federal",
+      "timely_filing_days": 365,
+      "contacts": {
+        "website": "tricare.mil"
+      }
+    }
+  }
+}

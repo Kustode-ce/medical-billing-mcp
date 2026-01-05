@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+      
+      - name: Lint with ruff
+        run: |
+          ruff check src tests
+      
+      - name: Format check with black
+        run: |
+          black --check src tests
+      
+      - name: Run tests
+        run: |
+          pytest tests/ -v
+      
+      - name: Run self-test
+        run: |
+          python -m medical_billing_mcp --test
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Build Docker image
+        run: |
+          docker build -t medical-billing-mcp -f docker/Dockerfile .
+      
+      - name: Test Docker image
+        run: |
+          docker run --rm medical-billing-mcp python -m medical_billing_mcp --test

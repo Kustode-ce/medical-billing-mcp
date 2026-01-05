@@ -1,0 +1,224 @@
+{
+  "_meta": {
+    "description": "CARC (Claim Adjustment Reason Codes) with resolution steps",
+    "source": "X12 / Washington Publishing Company",
+    "last_updated": "2025-01-05",
+    "note": "Resolution steps based on real-world experience - contributions welcome"
+  },
+  "groups": {
+    "CO": {
+      "name": "Contractual Obligation",
+      "description": "Amount provider agreed to write off per contract",
+      "patient_billable": false
+    },
+    "PR": {
+      "name": "Patient Responsibility",
+      "description": "Amount owed by patient",
+      "patient_billable": true
+    },
+    "PI": {
+      "name": "Payer Initiated",
+      "description": "Adjustment initiated by payer",
+      "patient_billable": false
+    },
+    "OA": {
+      "name": "Other Adjustment",
+      "description": "Other reasons",
+      "patient_billable": false
+    }
+  },
+  "codes": {
+    "1": {
+      "description": "Deductible amount",
+      "group": "PR",
+      "category": "patient_responsibility",
+      "resolution_steps": [
+        "Verify patient's deductible status",
+        "Bill patient for deductible amount",
+        "Confirm amount applied to deductible is accurate"
+      ]
+    },
+    "2": {
+      "description": "Coinsurance amount",
+      "group": "PR",
+      "category": "patient_responsibility",
+      "resolution_steps": [
+        "Bill patient for coinsurance amount",
+        "Verify coinsurance percentage matches contract"
+      ]
+    },
+    "3": {
+      "description": "Co-payment amount",
+      "group": "PR",
+      "category": "patient_responsibility",
+      "resolution_steps": [
+        "Should have been collected at time of service",
+        "Bill patient if not collected"
+      ]
+    },
+    "4": {
+      "description": "Procedure code inconsistent with modifier or required modifier missing",
+      "group": "CO",
+      "category": "coding",
+      "resolution_steps": [
+        "Review modifier requirements for the procedure code",
+        "Check if modifier is in correct position (1st, 2nd, etc.)",
+        "Add missing modifier if appropriate",
+        "Remove inappropriate modifier if present",
+        "Resubmit corrected claim"
+      ],
+      "common_fixes": [
+        "Add modifier 25 to E/M billed with procedure",
+        "Add laterality modifier (RT/LT/50)",
+        "Add TC or 26 for split billing"
+      ],
+      "appeal_if": "Modifier was correct - provide documentation"
+    },
+    "5": {
+      "description": "Procedure code/bill type inconsistent with place of service",
+      "group": "CO",
+      "category": "coding",
+      "resolution_steps": [
+        "Verify place of service code is correct",
+        "Check if procedure is payable at that location",
+        "Correct POS and resubmit"
+      ]
+    },
+    "16": {
+      "description": "Claim/service lacks information needed for adjudication",
+      "group": "CO",
+      "category": "incomplete",
+      "resolution_steps": [
+        "Check RARC for specific missing information",
+        "Review claim for missing fields",
+        "Add required information and resubmit"
+      ]
+    },
+    "18": {
+      "description": "Exact duplicate claim/service",
+      "group": "CO",
+      "category": "duplicate",
+      "resolution_steps": [
+        "Check if original claim was paid",
+        "If truly duplicate, no action needed",
+        "If different service, add modifier 76 or 77 and resubmit"
+      ]
+    },
+    "27": {
+      "description": "Expenses incurred after coverage terminated",
+      "group": "CO",
+      "category": "eligibility",
+      "resolution_steps": [
+        "Verify patient eligibility on date of service",
+        "Bill correct payer if coverage changed",
+        "Bill patient if no coverage existed"
+      ]
+    },
+    "29": {
+      "description": "Time limit for filing has expired",
+      "group": "CO",
+      "category": "timely_filing",
+      "resolution_steps": [
+        "Check timely filing limit for this payer",
+        "Gather proof of original timely submission",
+        "Appeal with clearinghouse transmission reports",
+        "Document any payer delays that caused late filing"
+      ],
+      "appeal_documentation": [
+        "Original submission confirmation",
+        "Clearinghouse acceptance report",
+        "Rejection notices that delayed processing",
+        "Evidence of payer system issues"
+      ],
+      "prevention": "Submit claims within 30-45 days of DOS"
+    },
+    "50": {
+      "description": "Non-covered service - not deemed medically necessary by payer",
+      "group": "CO",
+      "category": "medical_necessity",
+      "resolution_steps": [
+        "Review diagnosis codes - use most specific ICD-10 available",
+        "Check LCD/NCD coverage criteria for this procedure",
+        "Add secondary diagnoses that support medical necessity",
+        "Gather clinical documentation supporting need",
+        "Submit appeal with letter of medical necessity"
+      ],
+      "appeal_documentation": [
+        "Letter from physician explaining why service was needed",
+        "Relevant clinical notes and test results",
+        "LCD/NCD criteria showing patient qualifies",
+        "Peer-reviewed literature if off-label/unusual"
+      ],
+      "prevention_tips": [
+        "Use most specific diagnosis code",
+        "Include all relevant secondary diagnoses",
+        "Document medical necessity in clinical notes before service"
+      ],
+      "patient_billable": false,
+      "note": "CO group - cannot bill patient. Must appeal or write off."
+    },
+    "96": {
+      "description": "Non-covered charge(s)",
+      "group": "CO",
+      "category": "non_covered",
+      "resolution_steps": [
+        "Verify service is covered under patient's benefit plan",
+        "Check if ABN/waiver was obtained",
+        "Appeal if service should be covered"
+      ]
+    },
+    "97": {
+      "description": "Payment included in allowance for another service (bundled)",
+      "group": "CO",
+      "category": "bundling",
+      "resolution_steps": [
+        "Review CCI edits for code combination",
+        "Determine if services were truly distinct",
+        "If distinct, add modifier 59 or X-modifier and resubmit",
+        "If bundled correctly, no action - accept bundling"
+      ],
+      "note": "Modifier may not always override bundling - check payer rules"
+    },
+    "109": {
+      "description": "Claim not covered by this payer/contractor",
+      "group": "CO",
+      "category": "wrong_payer",
+      "resolution_steps": [
+        "Verify payer/plan is correct",
+        "Check for COB - bill primary payer first",
+        "Resubmit to correct payer"
+      ]
+    },
+    "151": {
+      "description": "Payment adjusted - information does not support frequency of services",
+      "group": "CO",
+      "category": "frequency",
+      "resolution_steps": [
+        "Check frequency limits for this code/payer",
+        "Gather documentation supporting medical necessity for frequency",
+        "Appeal with clinical justification"
+      ]
+    },
+    "197": {
+      "description": "Precertification/authorization/notification absent",
+      "group": "CO",
+      "category": "authorization",
+      "resolution_steps": [
+        "Check if service truly required prior auth",
+        "If auth was obtained, add auth number and resubmit",
+        "Request retroactive authorization if available",
+        "Appeal with documentation of emergent circumstances"
+      ]
+    },
+    "204": {
+      "description": "Service/equipment/drug not covered under patient's benefit plan",
+      "group": "CO",
+      "category": "non_covered",
+      "resolution_steps": [
+        "Verify patient's specific benefit coverage",
+        "Check for alternative covered codes",
+        "If ABN was obtained, bill patient"
+      ]
+    }
+  }
+}
