@@ -4,9 +4,10 @@ Tests for Medical Billing MCP handlers.
 Run with: pytest tests/ -v
 """
 
-import pytest
-from pathlib import Path
 import sys
+from pathlib import Path
+
+import pytest
 
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
@@ -132,7 +133,7 @@ class TestBundlingLookup:
     def test_bundled_codes(self):
         """Test bundled code pair."""
         result = handlers.lookup_bundling(DATA_DIR, codes=["45378", "45380"])
-        assert result.get("any_bundled") == True
+        assert result.get("any_bundled") is True
     
     def test_non_bundled_codes(self):
         """Test non-bundled code pair."""

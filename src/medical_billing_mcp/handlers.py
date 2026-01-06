@@ -9,7 +9,7 @@ No classes, no complexity - just functions.
 
 import json
 from pathlib import Path
-from typing import Dict, Any, Optional, List
+from typing import Any, Dict, List, Optional
 
 # =============================================================================
 # Data Loading (with caching)

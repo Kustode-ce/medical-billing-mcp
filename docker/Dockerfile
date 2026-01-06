@@ -14,15 +14,16 @@ LABEL org.opencontainers.image.licenses="MIT"
 # Set working directory
 WORKDIR /app
 
-# Install dependencies
-COPY pyproject.toml .
-RUN pip install --no-cache-dir build && \
-    pip install --no-cache-dir mcp httpx
+# Copy package metadata (pyproject.toml requires README.md)
+COPY pyproject.toml README.md ./
+
+# Install build dependencies
+RUN pip install --no-cache-dir build mcp httpx
 
 # Copy source code
 COPY src/ src/
 
-# Install the package
+# Install the package in editable mode
 RUN pip install --no-cache-dir -e .
 
 # Default command - run the MCP server

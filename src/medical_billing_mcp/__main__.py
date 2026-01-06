@@ -8,12 +8,14 @@ Usage:
 """
 
 import sys
+
 from . import __version__
 
 
 def self_test():
     """Run a quick self-test to verify everything works."""
     from pathlib import Path
+
     from . import handlers
     
     data_dir = Path(__file__).parent / "data"
