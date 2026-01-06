@@ -1,7 +1,7 @@
 {
   "_meta": {
     "description": "Payer-specific billing rules",
-    "last_updated": "2025-01-05",
+    "last_updated": "2026-01-06",
     "note": "Rules vary by plan/product - always verify with specific contract"
   },
   "payers": {

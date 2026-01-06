@@ -3,7 +3,7 @@
     "description": "CPT procedure codes - descriptions only",
     "source": "AMA (limited educational use)",
     "note": "Full CPT requires AMA license. This is seed data for common codes.",
-    "last_updated": "2025-01-05"
+    "last_updated": "2026-01-06"
   },
   "codes": {
     "99212": {

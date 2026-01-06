@@ -179,7 +179,7 @@ medical-billing-mcp/
   "_meta": {
     "description": "ICD-10-CM diagnosis codes",
     "source": "CMS",
-    "version": "2025"
+    "version": "2026"
   },
   "codes": {
     "E11.9": {

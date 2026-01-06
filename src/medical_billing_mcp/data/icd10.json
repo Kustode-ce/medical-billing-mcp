@@ -2,8 +2,8 @@
   "_meta": {
     "description": "ICD-10-CM diagnosis codes",
     "source": "CMS",
-    "version": "FY2025",
-    "last_updated": "2025-01-05",
+    "version": "FY2026",
+    "last_updated": "2026-01-06",
     "note": "Seed data - community contributions welcome"
   },
   "codes": {
