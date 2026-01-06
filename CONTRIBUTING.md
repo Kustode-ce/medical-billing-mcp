@@ -139,7 +139,7 @@ Be respectful and constructive. We're all here to help healthcare work better.
 
 ## Questions?
 
-- Open a [Discussion](https://github.com/YOUR_ORG/medical-billing-mcp/discussions)
+- Open a [Discussion](https://github.com/Kustode-ce/medical-billing-mcp/discussions)
 - Tag maintainers in your PR
 
 ---

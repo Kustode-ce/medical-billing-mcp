@@ -4,7 +4,7 @@ Medical Billing MCP
 Open-source medical billing knowledge for AI assistants.
 
 License: MIT
-Repository: https://github.com/YOUR_ORG/medical-billing-mcp
+Repository: https://github.com/Kustode-ce/medical-billing-mcp
 """
 
 __version__ = "0.1.0"

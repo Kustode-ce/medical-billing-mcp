@@ -6,7 +6,7 @@ Get up and running in 5 minutes.
 
 ```bash
 # Clone
-git clone https://github.com/YOUR_ORG/medical-billing-mcp.git
+git clone https://github.com/Kustode-ce/medical-billing-mcp.git
 cd medical-billing-mcp
 
 # Install
@@ -20,7 +20,7 @@ python -m medical_billing_mcp --test
 
 ```bash
 # Clone
-git clone https://github.com/YOUR_ORG/medical-billing-mcp.git
+git clone https://github.com/Kustode-ce/medical-billing-mcp.git
 cd medical-billing-mcp
 
 # Build and run

@@ -262,8 +262,8 @@ MIT License - see [LICENSE](LICENSE)
 
 ## Support
 
-- 🐛 **Issues:** [GitHub Issues](https://github.com/YOUR_ORG/medical-billing-mcp/issues)
-- 💬 **Discussions:** [GitHub Discussions](https://github.com/YOUR_ORG/medical-billing-mcp/discussions)
+- 🐛 **Issues:** [GitHub Issues](https://github.com/Kustode-ce/medical-billing-mcp/issues)
+- 💬 **Discussions:** [GitHub Discussions](https://github.com/Kustode-ce/medical-billing-mcp/discussions)
 
 ---
 
