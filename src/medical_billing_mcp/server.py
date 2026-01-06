@@ -38,16 +38,10 @@ TOOLS = [
         inputSchema={
             "type": "object",
             "properties": {
-                "code": {
-                    "type": "string",
-                    "description": "ICD-10 code (e.g., 'E11.9')"
-                },
-                "search": {
-                    "type": "string",
-                    "description": "Search term (e.g., 'diabetes')"
-                }
-            }
-        }
+                "code": {"type": "string", "description": "ICD-10 code (e.g., 'E11.9')"},
+                "search": {"type": "string", "description": "Search term (e.g., 'diabetes')"},
+            },
+        },
     ),
     Tool(
         name="lookup_cpt",
@@ -55,16 +49,10 @@ TOOLS = [
         inputSchema={
             "type": "object",
             "properties": {
-                "code": {
-                    "type": "string",
-                    "description": "CPT code (e.g., '99213')"
-                },
-                "search": {
-                    "type": "string",
-                    "description": "Search term (e.g., 'office visit')"
-                }
-            }
-        }
+                "code": {"type": "string", "description": "CPT code (e.g., '99213')"},
+                "search": {"type": "string", "description": "Search term (e.g., 'office visit')"},
+            },
+        },
     ),
     Tool(
         name="lookup_modifier",
@@ -72,13 +60,10 @@ TOOLS = [
         inputSchema={
             "type": "object",
             "properties": {
-                "modifier": {
-                    "type": "string",
-                    "description": "Modifier code (e.g., '25', '59')"
-                }
+                "modifier": {"type": "string", "description": "Modifier code (e.g., '25', '59')"}
             },
-            "required": ["modifier"]
-        }
+            "required": ["modifier"],
+        },
     ),
     Tool(
         name="lookup_denial",
@@ -86,16 +71,13 @@ TOOLS = [
         inputSchema={
             "type": "object",
             "properties": {
-                "code": {
-                    "type": "string",
-                    "description": "Denial code (e.g., 'CO-50', '50')"
-                },
+                "code": {"type": "string", "description": "Denial code (e.g., 'CO-50', '50')"},
                 "search": {
                     "type": "string",
-                    "description": "Search term (e.g., 'medical necessity')"
-                }
-            }
-        }
+                    "description": "Search term (e.g., 'medical necessity')",
+                },
+            },
+        },
     ),
     Tool(
         name="lookup_payer",
@@ -105,11 +87,11 @@ TOOLS = [
             "properties": {
                 "payer": {
                     "type": "string",
-                    "description": "Payer name (e.g., 'medicare', 'bcbs_ma')"
+                    "description": "Payer name (e.g., 'medicare', 'bcbs_ma')",
                 }
             },
-            "required": ["payer"]
-        }
+            "required": ["payer"],
+        },
     ),
     Tool(
         name="lookup_bundling",
@@ -120,12 +102,12 @@ TOOLS = [
                 "codes": {
                     "type": "array",
                     "items": {"type": "string"},
-                    "description": "CPT codes to check (e.g., ['99213', '36415'])"
+                    "description": "CPT codes to check (e.g., ['99213', '36415'])",
                 }
             },
-            "required": ["codes"]
-        }
-    )
+            "required": ["codes"],
+        },
+    ),
 ]
 
 
@@ -138,65 +120,42 @@ async def list_tools() -> List[Tool]:
 @server.call_tool()
 async def call_tool(name: str, arguments: Dict[str, Any]) -> CallToolResult:
     """Route tool calls to handlers."""
-    
+
     try:
         # Route to appropriate handler
         if name == "lookup_icd10":
             result = handlers.lookup_icd10(
-                DATA_DIR,
-                code=arguments.get("code"),
-                search=arguments.get("search")
+                DATA_DIR, code=arguments.get("code"), search=arguments.get("search")
             )
-        
+
         elif name == "lookup_cpt":
             result = handlers.lookup_cpt(
-                DATA_DIR,
-                code=arguments.get("code"),
-                search=arguments.get("search")
+                DATA_DIR, code=arguments.get("code"), search=arguments.get("search")
             )
-        
+
         elif name == "lookup_modifier":
-            result = handlers.lookup_modifier(
-                DATA_DIR,
-                modifier=arguments.get("modifier")
-            )
-        
+            result = handlers.lookup_modifier(DATA_DIR, modifier=arguments.get("modifier"))
+
         elif name == "lookup_denial":
             result = handlers.lookup_denial(
-                DATA_DIR,
-                code=arguments.get("code"),
-                search=arguments.get("search")
+                DATA_DIR, code=arguments.get("code"), search=arguments.get("search")
             )
-        
+
         elif name == "lookup_payer":
-            result = handlers.lookup_payer(
-                DATA_DIR,
-                payer=arguments.get("payer")
-            )
-        
+            result = handlers.lookup_payer(DATA_DIR, payer=arguments.get("payer"))
+
         elif name == "lookup_bundling":
-            result = handlers.lookup_bundling(
-                DATA_DIR,
-                codes=arguments.get("codes", [])
-            )
-        
+            result = handlers.lookup_bundling(DATA_DIR, codes=arguments.get("codes", []))
+
         else:
             result = {"error": f"Unknown tool: {name}"}
-        
+
         # Return result as JSON
-        return CallToolResult(
-            content=[TextContent(
-                type="text",
-                text=json.dumps(result, indent=2)
-            )]
-        )
-    
+        return CallToolResult(content=[TextContent(type="text", text=json.dumps(result, indent=2))])
+
     except Exception as e:
         return CallToolResult(
-            content=[TextContent(
-                type="text",
-                text=json.dumps({"error": str(e)})
-            )]
+            content=[TextContent(type="text", text=json.dumps({"error": str(e)}))]
         )
 
 
@@ -204,14 +163,11 @@ async def call_tool(name: str, arguments: Dict[str, Any]) -> CallToolResult:
 # Main Entry Point
 # =============================================================================
 
+
 async def main():
     """Run the MCP server."""
     async with stdio_server() as (read_stream, write_stream):
-        await server.run(
-            read_stream,
-            write_stream,
-            server.create_initialization_options()
-        )
+        await server.run(read_stream, write_stream, server.create_initialization_options())
 
 
 def run():
