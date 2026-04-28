@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/kustode-ce-medical-billing-mcp-badge.png)](https://mseep.ai/app/kustode-ce-medical-billing-mcp)
+
 # 🏥 Medical Billing MCP
 
 **Open-source billing knowledge for AI assistants**
